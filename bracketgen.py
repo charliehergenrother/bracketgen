@@ -4,80 +4,235 @@ import os
 import sys
 import random
 
-PLAY_IN_WINNERS = ["Texas A&M-CC", "Pittsburgh"]
-MATCHUP_WINNERS = {
-        #### start of first round ####
-        #0: "Alabama",
-        #1: "Maryland",
-        #2: "San Diego State",
-        #3: "Virginia",
-        #4: "Creighton",
-        #5: "Baylor",
-        #6: "Missouri",
-        #7: "Arizona",
-        #8: "Purdue",
-        #9: "Memphis",
-        #10: "Duke",
-        #11: "Tennessee",
-        #12: "Kentucky",
-        #13: "Kansas State",
-        #14: "Michigan State",
-        #15: "Marquette",
-        #16: "Houston",
-        #17: "Iowa",
-        #18: "Miami (FL)",
-        #19: "Indiana",
-        #20: "Iowa State",
-        #21: "Xavier",
-        #22: "Texas A&M",
-        #23: "Texas",
-        #24: "Kansas",
-        #25: "Arkansas",
-        #26: "Saint Mary's",
-        #27: "Connecticut",
-        #28: "TCU",
-        #29: "Gonzaga",
-        #30: "Northwestern",
-        #31: "UCLA",
-        #### start of second round ####
-        #32: "Alabama",
-        #33: "Virginia",
-        #34: "Baylor",
-        #35: "Arizona",
-        #36: "Purdue",
-        #37: "Tennessee",
-        #38: "Kansas State",
-        #39: "Marquette",
-        #40: "Houston",
-        #41: "Indiana",
-        #42: "Xavier",
-        #43: "Texas",
-        #44: "Kansas",
-        #45: "Connecticut",
-        #46: "Gonzaga",
-        #47: "UCLA",
-        #### start of Sweet 16 ####
-        #48: "Alabama",
-        #49: "Arizona",
-        #50: "Purdue",
-        #51: "Marquette",
-        #52: "Houston",
-        #53: "Texas",
-        #54: "Kansas",
-        #55: "UCLA",
-        #### start of Elite 8 ####
-        #56: "Alabama",
-        #57: "Purdue",
-        #58: "Houston",
-        #59: "Kansas",
-        #60: "Alabama",
-        #61: "Houston",
-        #62: "Alabama"
-        }
+PLAY_IN_WINNERS = []
+MATCHUP_WINNERS = {}
 
-def create_regions():
+def fill_winners(mens):
+    if len(PLAY_IN_WINNERS):
+        return
+    if mens:
+        PLAY_IN_WINNERS.append("Texas A&M-CC")
+        PLAY_IN_WINNERS.append("Pittsburgh")
+        #PLAY_IN_WINNERS.append("Fairleigh Dickinson")
+        #PLAY_IN_WINNERS.append("Arizona State")
+        #### start of first round ####
+        #MATCHUP_WINNERS[0] = "Alabama"
+        #MATCHUP_WINNERS[1] = "Maryland"
+        #MATCHUP_WINNERS[2] = "San Diego State"
+        #MATCHUP_WINNERS[3] = "Virginia"
+        #MATCHUP_WINNERS[4] = "Creighton"
+        #MATCHUP_WINNERS[5] = "Baylor"
+        #MATCHUP_WINNERS[6] = "Missouri"
+        #MATCHUP_WINNERS[7] = "Arizona"
+        #MATCHUP_WINNERS[8] = "Purdue"
+        #MATCHUP_WINNERS[9] = "Memphis"
+        #MATCHUP_WINNERS[10] = "Duke"
+        #MATCHUP_WINNERS[11] = "Tennessee"
+        #MATCHUP_WINNERS[12] = "Kentucky"
+        #MATCHUP_WINNERS[13] = "Kansas State"
+        #MATCHUP_WINNERS[14] = "Michigan State"
+        #MATCHUP_WINNERS[15] = "Marquette"
+        #MATCHUP_WINNERS[16] = "Houston"
+        #MATCHUP_WINNERS[17] = "Iowa"
+        #MATCHUP_WINNERS[18] = "Miami (FL)"
+        #MATCHUP_WINNERS[19] = "Indiana"
+        #MATCHUP_WINNERS[20] = "Iowa State"
+        #MATCHUP_WINNERS[21] = "Xavier"
+        #MATCHUP_WINNERS[22] = "Texas A&M"
+        #MATCHUP_WINNERS[23] = "Texas"
+        #MATCHUP_WINNERS[24] = "Kansas"
+        #MATCHUP_WINNERS[25] = "Arkansas"
+        #MATCHUP_WINNERS[26] = "Saint Mary's"
+        #MATCHUP_WINNERS[27] = "Connecticut"
+        #MATCHUP_WINNERS[28] = "TCU"
+        #MATCHUP_WINNERS[29] = "Gonzaga"
+        #MATCHUP_WINNERS[30] = "Northwestern"
+        #MATCHUP_WINNERS[31] = "UCLA"
+        #### start of second round ####
+        #MATCHUP_WINNERS[32] = "Alabama"
+        #MATCHUP_WINNERS[33] = "Virginia"
+        #MATCHUP_WINNERS[34] = "Baylor"
+        #MATCHUP_WINNERS[35] = "Arizona"
+        #MATCHUP_WINNERS[36] = "Purdue"
+        #MATCHUP_WINNERS[37] = "Tennessee"
+        #MATCHUP_WINNERS[38] = "Kansas State"
+        #MATCHUP_WINNERS[39] = "Marquette"
+        #MATCHUP_WINNERS[40] = "Houston"
+        #MATCHUP_WINNERS[41] = "Indiana"
+        #MATCHUP_WINNERS[42] = "Xavier"
+        #MATCHUP_WINNERS[43] = "Texas"
+        #MATCHUP_WINNERS[44] = "Kansas"
+        #MATCHUP_WINNERS[45] = "Connecticut"
+        #MATCHUP_WINNERS[46] = "Gonzaga"
+        #MATCHUP_WINNERS[47] = "UCLA"
+        #### start of Sweet 16 ####
+        #MATCHUP_WINNERS[48] = "Alabama"
+        #MATCHUP_WINNERS[49] = "Arizona"
+        #MATCHUP_WINNERS[50] = "Purdue"
+        #MATCHUP_WINNERS[51] = "Marquette"
+        #MATCHUP_WINNERS[52] = "Houston"
+        #MATCHUP_WINNERS[53] = "Texas"
+        #MATCHUP_WINNERS[54] = "Kansas"
+        #MATCHUP_WINNERS[55] = "UCLA"
+        #### start of Elite 8 ####
+        #MATCHUP_WINNERS[56] = "Alabama"
+        #MATCHUP_WINNERS[57] = "Purdue"
+        #MATCHUP_WINNERS[58] = "Houston"
+        #MATCHUP_WINNERS[59] = "Kansas"
+        #MATCHUP_WINNERS[60] = "Alabama"
+        #MATCHUP_WINNERS[61] = "Houston"
+        #MATCHUP_WINNERS[62] = "Alabama"
+    else:
+        #PLAY_IN_WINNERS.append("Mississippi State")
+        #PLAY_IN_WINNERS.append("Southern")
+        #PLAY_IN_WINNERS.append("Purdue")
+        #PLAY_IN_WINNERS.append("Monmouth")
+        #### start of first round ####
+        #MATCHUP_WINNERS[0] = "South Carolina"
+        #MATCHUP_WINNERS[1] = "South Florida"
+        #MATCHUP_WINNERS[2] = "Oklahoma"
+        #MATCHUP_WINNERS[3] = "UCLA"
+        #MATCHUP_WINNERS[4] = "Creighton"
+        #MATCHUP_WINNERS[5] = "Notre Dame"
+        #MATCHUP_WINNERS[6] = "Arizona"
+        #MATCHUP_WINNERS[7] = "Maryland"
+        #MATCHUP_WINNERS[8] = "Stanford"
+        #MATCHUP_WINNERS[9] = "Mississippi"
+        #MATCHUP_WINNERS[10] = "Louisville"
+        #MATCHUP_WINNERS[11] = "Texas"
+        #MATCHUP_WINNERS[12] = "Colorado"
+        #MATCHUP_WINNERS[13] = "Duke"
+        #MATCHUP_WINNERS[14] = "Florida State"
+        #MATCHUP_WINNERS[15] = "Iowa"
+        #MATCHUP_WINNERS[16] = "Indiana"
+        #MATCHUP_WINNERS[17] = "Oklahoma State"
+        #MATCHUP_WINNERS[18] = "Washington State"
+        #MATCHUP_WINNERS[19] = "Villanova"
+        #MATCHUP_WINNERS[20] = "Michigan"
+        #MATCHUP_WINNERS[21] = "LSU"
+        #MATCHUP_WINNERS[22] = "NC State"
+        #MATCHUP_WINNERS[23] = "Utah"
+        #MATCHUP_WINNERS[24] = "Virginia Tech"
+        #MATCHUP_WINNERS[25] = "USC"
+        #MATCHUP_WINNERS[26] = "Iowa State"
+        #MATCHUP_WINNERS[27] = "Tennessee"
+        #MATCHUP_WINNERS[28] = "North Carolina"
+        #MATCHUP_WINNERS[29] = "Ohio State"
+        #MATCHUP_WINNERS[30] = "Baylor"
+        #MATCHUP_WINNERS[31] = "Connecticut"
+        #### start of second round ####
+        #MATCHUP_WINNERS[32] = "South Carolina"
+        #MATCHUP_WINNERS[33] = "UCLA"
+        #MATCHUP_WINNERS[34] = "Notre Dame"
+        #MATCHUP_WINNERS[35] = "Maryland"
+        #MATCHUP_WINNERS[36] = "Stanford"
+        #MATCHUP_WINNERS[37] = "Texas"
+        #MATCHUP_WINNERS[38] = "Duke"
+        #MATCHUP_WINNERS[39] = "Iowa"
+        #MATCHUP_WINNERS[40] = "Indiana"
+        #MATCHUP_WINNERS[41] = "Villanova"
+        #MATCHUP_WINNERS[42] = "LSU"
+        #MATCHUP_WINNERS[43] = "Utah"
+        #MATCHUP_WINNERS[44] = "Virginia Tech"
+        #MATCHUP_WINNERS[45] = "Tennessee"
+        #MATCHUP_WINNERS[46] = "Ohio State"
+        #MATCHUP_WINNERS[47] = "Connecticut"
+        #### start of Sweet 16 ####
+        #MATCHUP_WINNERS[48] = "South Carolina"
+        #MATCHUP_WINNERS[49] = "Maryland"
+        #MATCHUP_WINNERS[50] = "Stanford"
+        #MATCHUP_WINNERS[51] = "Iowa"
+        #MATCHUP_WINNERS[52] = "Indiana"
+        #MATCHUP_WINNERS[53] = "Utah"
+        #MATCHUP_WINNERS[54] = "Virginia Tech"
+        #MATCHUP_WINNERS[55] = "Connecticut"
+        #### start of Elite 8 ####
+        #MATCHUP_WINNERS[56] = "South Carolina"
+        #MATCHUP_WINNERS[57] = "Stanford"
+        #MATCHUP_WINNERS[58] = "Indiana"
+        #MATCHUP_WINNERS[59] = "Virginia Tech"
+        #MATCHUP_WINNERS[60] = "South Carolina"
+        #MATCHUP_WINNERS[61] = "Indiana"
+        #MATCHUP_WINNERS[62] = "South Carolina"
+        pass
+
+def create_regions(mens):
     regions = [dict(), dict(), dict(), dict()]
-    regions[0] = {  #upper left
+    if not mens:
+        regions[0] = {  #upper left
+            1: "South Carolina",
+            2: "Maryland",
+            3: "Notre Dame",
+            4: "UCLA",
+            5: "Oklahoma",
+            6: "Creighton",
+            7: "Arizona",
+            8: "South Florida",
+            9: "Marquette",
+            10: "West Virginia",
+            11: ["Illinois", "Mississippi State"],
+            12: "Portland",
+            13: "Sacramento State",
+            14: "Southern Utah",
+            15: "Holy Cross",
+            16: "Norfolk State"
+        }
+        regions[1] = {  #lower left
+            1: "Stanford",
+            2: "Iowa",
+            3: "Duke",
+            4: "Texas",
+            5: "Louisville",
+            6: "Colorado",
+            7: "Florida State",
+            8: "Mississippi",
+            9: "Gonzaga",
+            10: "Georgia",
+            11: "Middle Tennessee",
+            12: "Drake",
+            13: "East Carolina",
+            14: "Iona",
+            15: "SE Louisiana",
+            16: ["Southern", "Sacred Heart"]
+        }
+        regions[2] = {  #upper right
+            1: "Indiana",
+            2: "Utah",
+            3: "LSU",
+            4: "Villanova",
+            5: "Washington State",
+            6: "Michigan",
+            7: "NC State",
+            8: "Oklahoma State",
+            9: "Miami (FL)",
+            10: "Princeton",
+            11: "UNLV",
+            12: "FGCU",
+            13: "Cleveland State",
+            14: "Hawaii",
+            15: "Gardner-Webb",
+            16: ["Tennessee Tech", "Monmouth"]
+        }
+        regions[3] = {  #lower right
+            1: "Virginia Tech",
+            2: "Connecticut",
+            3: "Ohio State",
+            4: "Tennessee",
+            5: "Iowa State",
+            6: "North Carolina",
+            7: "Baylor",
+            8: "USC",
+            9: "South Dakota State",
+            10: "Alabama",
+            11: ["Purdue", "Saint John's"],
+            12: "Toledo",
+            13: "Saint Louis",
+            14: "James Madison",
+            15: "Vermont",
+            16: "Chattanooga"
+        }
+    else:
+        regions[0] = {  #upper left
             1: "Alabama",
             2: "Arizona",
             3: "Baylor",
@@ -95,7 +250,7 @@ def create_regions():
             15: "Princeton",
             16: ["Texas A&M-CC", "SE Missouri State"]
             }
-    regions[1] = {  #lower left
+        regions[1] = {  #lower left
             1: "Purdue",
             2: "Marquette",
             3: "Kansas State",
@@ -113,7 +268,7 @@ def create_regions():
             15: "Vermont",
             16: ["Texas Southern", "Fairleigh Dickinson"]
             }
-    regions[2] = {  #upper right
+        regions[2] = {  #upper right
             1: "Houston",
             2: "Texas",
             3: "Xavier",
@@ -131,7 +286,7 @@ def create_regions():
             15: "Colgate",
             16: "Northern Kentucky",
             }
-    regions[3] = {  #lower right
+        regions[3] = {  #lower right
             1: "Kansas",
             2: "UCLA",
             3: "Gonzaga",
@@ -212,8 +367,11 @@ def findmaxlen(teams, indices):
     lens = [len(teams[x]) for x in indices]
     return max(lens)
 
-def createteams():
-    f = open('fivethirtyeight_ncaa_forecasts_2023.csv')
+def create_teams(mens):
+    if mens:
+        f = open('fivethirtyeight_ncaa_forecasts_2023_men.csv')
+    else:
+        f = open('fivethirtyeight_ncaa_forecasts_2023_women.csv')
     teams = {}
     for line in f:
         line = line.strip()
@@ -311,21 +469,26 @@ if __name__ == '__main__':
     print_bracket = True
     num_sims = 1 
     argindex = 1
+    mens = True
     
     while argindex < len(sys.argv):
         if sys.argv[argindex] == '-h':
             print("Welcome to bracketgen, the bracket generator!")
-            print("Use: ./bracketgen [-h] [-n num_sims] [-s]")
+            print("Use: ./bracketgen [-h] [-n num_sims] [-s] [-w]")
             print("     -h: print this help message")
             print("     -n: run num_sims simulations and print the results afterward")
             print("     -s: suppress printing the bracket")
+            print("     -w: simulate women's tournament")
             sys.exit()
         elif sys.argv[argindex] == '-n':
             num_sims = int(sys.argv[argindex+1])
             argindex += 2
         elif sys.argv[argindex] == '-s':
             print_bracket = False
-            argindex += 1 
+            argindex += 1
+        elif sys.argv[argindex] == '-w':
+            mens = False
+            argindex += 1
         else:
             print('incorrect argument', sys.argv[argindex])
             sys.exit()
@@ -335,10 +498,10 @@ if __name__ == '__main__':
     champs = {}
 
     while trialnum < num_sims:
-        regions = create_regions()
+        regions = create_regions(mens)
         winners = []
 
-        teams = createteams()
+        teams = create_teams(mens)
         simbracket(winners, teams, regions)
 
         if print_bracket:
