@@ -4,8 +4,9 @@ import os
 import sys
 import random
 
-PLAY_IN_WINNERS = []
+PLAY_IN_WINNERS = ["Texas A&M-CC", "Pittsburgh"]
 MATCHUP_WINNERS = {
+        #### start of first round ####
         #0: "Alabama",
         #1: "Maryland",
         #2: "San Diego State",
@@ -21,7 +22,57 @@ MATCHUP_WINNERS = {
         #12: "Kentucky",
         #13: "Kansas State",
         #14: "Michigan State",
-        #15: "Marquette
+        #15: "Marquette",
+        #16: "Houston",
+        #17: "Iowa",
+        #18: "Miami (FL)",
+        #19: "Indiana",
+        #20: "Iowa State",
+        #21: "Xavier",
+        #22: "Texas A&M",
+        #23: "Texas",
+        #24: "Kansas",
+        #25: "Arkansas",
+        #26: "Saint Mary's",
+        #27: "Connecticut",
+        #28: "TCU",
+        #29: "Gonzaga",
+        #30: "Northwestern",
+        #31: "UCLA",
+        #### start of second round ####
+        #32: "Alabama",
+        #33: "Virginia",
+        #34: "Baylor",
+        #35: "Arizona",
+        #36: "Purdue",
+        #37: "Tennessee",
+        #38: "Kansas State",
+        #39: "Marquette",
+        #40: "Houston",
+        #41: "Indiana",
+        #42: "Xavier",
+        #43: "Texas",
+        #44: "Kansas",
+        #45: "Connecticut",
+        #46: "Gonzaga",
+        #47: "UCLA",
+        #### start of Sweet 16 ####
+        #48: "Alabama",
+        #49: "Arizona",
+        #50: "Purdue",
+        #51: "Marquette",
+        #52: "Houston",
+        #53: "Texas",
+        #54: "Kansas",
+        #55: "UCLA",
+        #### start of Elite 8 ####
+        #56: "Alabama",
+        #57: "Purdue",
+        #58: "Houston",
+        #59: "Kansas",
+        #60: "Alabama",
+        #61: "Houston",
+        #62: "Alabama"
         }
 
 def create_regions():
@@ -102,11 +153,17 @@ def create_regions():
 
 def do_play_in(matchup, winners, teams, regions):
     if matchup[0] in PLAY_IN_WINNERS:
-        region[seed] = matchup[0]
-        return matchup[0]
+        for region in regions:
+            for seed in region:
+                if type(region[seed]) == list and matchup[0] in region[seed]:
+                    region[seed] = matchup[0]
+                    return matchup[0]
     if matchup[1] in PLAY_IN_WINNERS:
-        region[seed] = matchup[1]
-        return matchup[1]
+        for region in regions:
+            for seed in region:
+                if type(region[seed]) == list and matchup[1] in region[seed]:
+                    region[seed] = matchup[1]
+                    return matchup[1]
     findwinner(matchup[0], matchup[1], winners, teams, regions)
     play_in_winner = winners.pop()
     found = False
