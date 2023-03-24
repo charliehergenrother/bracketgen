@@ -3,6 +3,7 @@
 import os
 import sys
 import random
+import argparse
 
 PLAY_IN_WINNERS = []
 MATCHUP_WINNERS = {}
@@ -464,34 +465,22 @@ def printbracket(winners, regions):
     print(regions[1][15].ljust(space) + myfirst + regions[3][15].rjust(space))
     print()
 
+def create_parser():
+    parser = argparse.ArgumentParser(description="Randomly generate a bracket using 538's prediction model")
+    parser.add_argument("-n", dest="num_sims", type=int, default=1, help="run n simulations and print the results (default=1)")
+    parser.add_argument("-s", dest="print_bracket", action='store_false', help="Suppress printing the bracket")
+    parser.add_argument("-w", dest="womens", action='store_true', help="Simulate the women's tournament")
+    parser.set_defaults(print_bracket=True, womens=False)
+    return parser 
+
 if __name__ == '__main__':
 
-    print_bracket = True
-    num_sims = 1 
-    argindex = 1
-    mens = True
-    
-    while argindex < len(sys.argv):
-        if sys.argv[argindex] == '-h':
-            print("Welcome to bracketgen, the bracket generator!")
-            print("Use: ./bracketgen [-h] [-n num_sims] [-s] [-w]")
-            print("     -h: print this help message")
-            print("     -n: run num_sims simulations and print the results afterward")
-            print("     -s: suppress printing the bracket")
-            print("     -w: simulate women's tournament")
-            sys.exit()
-        elif sys.argv[argindex] == '-n':
-            num_sims = int(sys.argv[argindex+1])
-            argindex += 2
-        elif sys.argv[argindex] == '-s':
-            print_bracket = False
-            argindex += 1
-        elif sys.argv[argindex] == '-w':
-            mens = False
-            argindex += 1
-        else:
-            print('incorrect argument', sys.argv[argindex])
-            sys.exit()
+    parser = create_parser()
+    args = parser.parse_args()
+
+    num_sims = args.num_sims
+    print_bracket = args.print_bracket
+    mens = not args.womens
     
     trialnum = 0
     finalfours = {}
