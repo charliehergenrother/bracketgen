@@ -2,16 +2,20 @@
 
 import random
 import argparse
+import numpy
+import os
 
 PLAY_IN_WINNERS = []
 MATCHUP_WINNERS = {}
+W_HOME_TEAMS = []
 
 def fill_winners(mens):
     if len(PLAY_IN_WINNERS):
         return
     if mens:
-        PLAY_IN_WINNERS.append("Texas A&M-CC")
-        PLAY_IN_WINNERS.append("Pittsburgh")
+        pass
+        #PLAY_IN_WINNERS.append("Texas A&M-CC")
+        #PLAY_IN_WINNERS.append("Pittsburgh")
         #PLAY_IN_WINNERS.append("Fairleigh Dickinson")
         #PLAY_IN_WINNERS.append("Arizona State")
         #### start of first round ####
@@ -159,153 +163,156 @@ def create_regions(mens):
     regions = [dict(), dict(), dict(), dict()]
     if not mens:
         regions[0] = {  #upper left
-            1: "South Carolina",
-            2: "Maryland",
-            3: "Notre Dame",
-            4: "UCLA",
-            5: "Oklahoma",
-            6: "Creighton",
-            7: "Arizona",
-            8: "South Florida",
-            9: "Marquette",
-            10: "West Virginia",
-            11: ["Illinois", "Mississippi State"],
-            12: "Portland",
-            13: "Sacramento State",
-            14: "Southern Utah",
-            15: "Holy Cross",
-            16: "Norfolk State"
+            1: "UCLA",
+            2: "NC State",
+            3: "LSU",
+            4: "Baylor",
+            5: "Mississippi",
+            6: "Florida St.",
+            7: "Michigan St.",
+            8: "Richmond",
+            9: "Georgia Tech",
+            10: "Harvard",
+            11: "George Mason",
+            12: "Ball St.",
+            13: "Grand Canyon",
+            14: "San Diego St.",
+            15: "Vermont",
+            16: ["UC San Diego", "Southern"]
         }
         regions[1] = {  #lower left
-            1: "Stanford",
-            2: "Iowa",
-            3: "Duke",
-            4: "Texas",
-            5: "Louisville",
-            6: "Colorado",
-            7: "Florida State",
-            8: "Mississippi",
-            9: "Gonzaga",
-            10: "Georgia",
-            11: "Middle Tennessee",
-            12: "Drake",
-            13: "East Carolina",
-            14: "Iona",
-            15: "SE Louisiana",
-            16: ["Southern", "Sacred Heart"]
+            1: "USC",
+            2: "Connecticut",
+            3: "Oklahoma",
+            4: "Kentucky",
+            5: "Kansas St.",
+            6: "Iowa",
+            7: "Oklahoma St.",
+            8: "California",
+            9: "Mississippi St.",
+            10: "South Dakota St.",
+            11: "Murray St.",
+            12: "Fairfield",
+            13: "Liberty",
+            14: "FGCU",
+            15: "Arkansas St.",
+            16: "UNC Greensboro"
         }
         regions[2] = {  #upper right
-            1: "Indiana",
-            2: "Utah",
-            3: "LSU",
-            4: "Villanova",
-            5: "Washington State",
-            6: "Michigan",
-            7: "NC State",
-            8: "Oklahoma State",
-            9: "Miami (FL)",
-            10: "Princeton",
-            11: "UNLV",
-            12: "FGCU",
-            13: "Cleveland State",
-            14: "Hawaii",
-            15: "Gardner-Webb",
-            16: ["Tennessee Tech", "Monmouth"]
+            1: "South Carolina",
+            2: "Duke",
+            3: "North Carolina",
+            4: "Maryland",
+            5: "Alabama",
+            6: "West Virginia",
+            7: "Vanderbilt",
+            8: "Utah",
+            9: "Indiana",
+            10: "Oregon",
+            11: ["Columbia", "Washington"],
+            12: "Green Bay",
+            13: "Norfolk St.",
+            14: "Oregon St.",
+            15: "Lehigh",
+            16: "Tennessee Tech"
         }
         regions[3] = {  #lower right
-            1: "Virginia Tech",
-            2: "Connecticut",
-            3: "Ohio State",
-            4: "Tennessee",
-            5: "Iowa State",
-            6: "North Carolina",
-            7: "Baylor",
-            8: "USC",
-            9: "South Dakota State",
-            10: "Alabama",
-            11: ["Purdue", "Saint John's"],
-            12: "Toledo",
-            13: "Saint Louis",
-            14: "James Madison",
-            15: "Vermont",
-            16: "Chattanooga"
+            1: "Texas",
+            2: "TCU",
+            3: "Notre Dame",
+            4: "Ohio St.",
+            5: "Tennessee",
+            6: "Michigan",
+            7: "Louisville",
+            8: "Illinois",
+            9: "Creighton",
+            10: "Nebraska",
+            11: ["Iowa St.", "Princeton"],
+            12: "South Florida",
+            13: "Montana St.",
+            14: "Stephen F. Austin",
+            15: "FDU",
+            16: ["High Point", "William & Mary"]
         }
     else:
         regions[0] = {  #upper left
-            1: "Alabama",
-            2: "Arizona",
-            3: "Baylor",
-            4: "Virginia",
-            5: "San Diego State",
-            6: "Creighton",
-            7: "Missouri",
-            8: "Maryland",
-            9: "West Virginia",
-            10: "Utah State",
-            11: "NC State",
-            12: "Charleston",
-            13: "Furman",
-            14: "UC-Santa Barbara",
-            15: "Princeton",
-            16: ["Texas A&M-CC", "SE Missouri State"]
+            1: "Auburn",
+            2: "Michigan St.",
+            3: "Iowa St.",
+            4: "Texas A&M",
+            5: "Michigan",
+            6: "Mississippi",
+            7: "Marquette",
+            8: "Louisville",
+            9: "Creighton",
+            10: "New Mexico",
+            11: ["San Diego St.", "North Carolina"],
+            12: "UC San Diego",
+            13: "Yale",
+            14: "Lipscomb",
+            15: "Bryant",
+            16: ["Alabama St.", "Saint Francis"]
             }
         regions[1] = {  #lower left
-            1: "Purdue",
-            2: "Marquette",
-            3: "Kansas State",
-            4: "Tennessee",
-            5: "Duke",
-            6: "Kentucky",
-            7: "Michigan State",
-            8: "Memphis",
-            9: "Florida Atlantic",
-            10: "USC",
-            11: "Providence",
-            12: "Oral Roberts",
-            13: "Louisiana",
-            14: "Montana State",
-            15: "Vermont",
-            16: ["Texas Southern", "Fairleigh Dickinson"]
+            1: "Florida",
+            2: "St. John's",
+            3: "Texas Tech",
+            4: "Maryland",
+            5: "Memphis",
+            6: "Missouri",
+            7: "Kansas",
+            8: "Connecticut",
+            9: "Oklahoma",
+            10: "Arkansas",
+            11: "Drake",
+            12: "Colorado St.",
+            13: "Grand Canyon",
+            14: "UNC Wilmington",
+            15: "Omaha",
+            16: "Norfolk St."
             }
         regions[2] = {  #upper right
-            1: "Houston",
-            2: "Texas",
-            3: "Xavier",
-            4: "Indiana",
-            5: "Miami (FL)",
-            6: "Iowa State",
-            7: "Texas A&M",
-            8: "Iowa",
-            9: "Auburn",
-            10: "Penn State",
-            11: ["Mississippi State", "Pittsburgh"],
-            12: "Drake",
-            13: "Kent State",
-            14: "Kennesaw State",
-            15: "Colgate",
-            16: "Northern Kentucky",
+            1: "Duke",
+            2: "Alabama",
+            3: "Wisconsin",
+            4: "Arizona",
+            5: "Oregon",
+            6: "BYU",
+            7: "St. Mary's",
+            8: "Mississippi St.",
+            9: "Baylor",
+            10: "Vanderbilt",
+            11: "VCU",
+            12: "Liberty",
+            13: "Akron",
+            14: "Montana",
+            15: "Robert Morris",
+            16: ["American", "Mount St. Mary's"],
             }
         regions[3] = {  #lower right
-            1: "Kansas",
-            2: "UCLA",
-            3: "Gonzaga",
-            4: "Connecticut",
-            5: "Saint Mary's",
-            6: "TCU",
-            7: "Northwestern",
-            8: "Arkansas",
-            9: "Illinois",
-            10: "Boise State",
-            11: ["Arizona State", "Nevada"],
-            12: "VCU",
-            13: "Iona",
-            14: "Grand Canyon",
-            15: "UNC-Asheville",
-            16: "Howard",
+            1: "Houston",
+            2: "Tennessee",
+            3: "Kentucky",
+            4: "Purdue",
+            5: "Clemson",
+            6: "Illinois",
+            7: "UCLA",
+            8: "Gonzaga",
+            9: "Georgia",
+            10: "Utah St.",
+            11: ["Texas", "Xavier"],
+            12: "McNeese",
+            13: "High Point",
+            14: "Troy",
+            15: "Wofford",
+            16: "SIU Edwardsville",
             }
+        for region in regions:
+            for seed in [1, 2, 3, 4]:
+                W_HOME_TEAMS.append(region[seed])
     return regions
 
-def do_play_in(matchup, winners, teams, regions):
+def do_play_in(matchup, winners, teams, regions, mens):
     if matchup[0] in PLAY_IN_WINNERS:
         for region in regions:
             for seed in region:
@@ -318,7 +325,7 @@ def do_play_in(matchup, winners, teams, regions):
                 if type(region[seed]) == list and matchup[1] in region[seed]:
                     region[seed] = matchup[1]
                     return matchup[1]
-    findwinner(matchup[0], matchup[1], winners, teams, regions)
+    findwinner(matchup[0], matchup[1], winners, teams, regions, mens)
     play_in_winner = winners.pop()
     found = False
     for region in regions:
@@ -331,31 +338,44 @@ def do_play_in(matchup, winners, teams, regions):
             break
     return play_in_winner
 
-def findwinner(team1, team2, winners, teams, regions):
+def findwinner(team1, team2, winners, teams, regions, mens):
     if type(team1) == list:
-        play_in_winner = do_play_in(team1, winners, teams, regions)
+        play_in_winner = do_play_in(team1, winners, teams, regions, mens)
         team1 = play_in_winner
     if type(team2) == list:
-        play_in_winner = do_play_in(team2, winners, teams, regions)
+        play_in_winner = do_play_in(team2, winners, teams, regions, mens)
         team2 = play_in_winner
     if len(winners) in MATCHUP_WINNERS:
         winners.append(MATCHUP_WINNERS[len(winners)])
 
-    diff = teams[team1] - teams[team2]
-    chance =  1/(1+(10**(-1*diff*30.464/400)))
+    spread = (teams[team1] - teams[team2])
+    if mens:
+        spread *= 0.675 # kenpom ratings are over 100 possessions. The average men's bball game has 67.5 possessions
+    else:
+        #women's first two rounds are at home
+        if team1 in W_HOME_TEAMS and len(winners) < 48:
+            spread += 2.91
+        if team2 in W_HOME_TEAMS and len(winners) < 48:
+            spread -= 2.91
+    if abs(spread) <= 21:
+        chance = -0.00002609*spread*spread*spread + 0.00002466*spread*spread + 0.033206*spread + 0.5
+    elif spread > 21:
+        chance = 0.98
+    elif spread < -21:
+        chance = 0.02
     r = random.uniform(0.0, 1.0)
     if r < chance:
         winners.append(team1)
     else:
         winners.append(team2)
 
-def simbracket(winners, teams, regions):
+def simbracket(mens, winners, teams, regions):
     for region in regions:
         for matchup in [[1, 16], [8, 9], [5, 12], [4, 13], [6, 11], [3, 14], [7, 10], [2, 15]]:
-            findwinner(region[matchup[0]], region[matchup[1]], winners, teams, regions)
+            findwinner(region[matchup[0]], region[matchup[1]], winners, teams, regions, mens)
     winnerindex = 0
     while winnerindex + 1 < len(winners):
-        findwinner(winners[winnerindex], winners[winnerindex + 1], winners, teams, regions)
+        findwinner(winners[winnerindex], winners[winnerindex + 1], winners, teams, regions, mens)
         winnerindex += 2
     
 def findmaxlen(teams, indices):
@@ -366,19 +386,72 @@ def findmaxlen(teams, indices):
     lens = [len(teams[x]) for x in indices]
     return max(lens)
 
-def create_teams(mens):
+def create_teams(init_teams):
+    rng = numpy.random.default_rng()
+    simmed_ratings = dict()
+    for team in init_teams:
+        simmed_ratings[team] = rng.normal(init_teams[team]["rating"], 0.5)
+    return simmed_ratings
+
+def translate_team_kenpom(team):
+    translate_dict = {
+        "Nebraska Omaha": "Omaha",
+        "Saint Mary's": "St. Mary's",
+        "SIUE": "SIU Edwardsville"
+    }
+    if team in translate_dict:
+        return translate_dict[team]
+    return team
+
+def translate_team_sonny(team):
+    translate_dict = {
+        "California San Diego": "UC San Diego",
+        "Ucla": "UCLA",
+        "Lsu": "LSU",
+        "North Carolina St.": "NC State",
+        "Southern Cal": "USC",
+        "North Carolina Greensboro": "UNC Greensboro",
+        "Florida Gulf Coast": "FGCU",
+        "Wisconsin Green Bay": "Green Bay",
+        "S. F. Austin": "Stephen F. Austin",
+        "Tcu": "TCU",
+        "Fairleigh Dickinson": "FDU"
+    }
+    if team in translate_dict:
+        return translate_dict[team]
+    return team
+
+def scrape_initial_kenpom(mens):
+    #TODO maybe only do this once a day
+    team_kenpoms = dict()
     if mens:
-        f = open('fivethirtyeight_ncaa_forecasts_2023_men.csv')
+        os.system('wget --user-agent="Mozilla" -O kenpoms.html https://kenpom.com/')
+        with open("kenpoms.html", "r") as f:
+            for line in f.read().split("\n"):
+                if "team.php?" in line:
+                    anchor_index = line.find("team.php?")
+                    team = line[line.find('">', anchor_index)+2:line.find("</a>")]
+                    team = translate_team_kenpom(team)
+                    rank = int(line[line.find("hard_left")+11:line.find('</td>')])
+                    rating = float(line[line.find("<td>")+4:line.find('</td><td class="td-left divide')])
+                    team_kenpoms[team] = {"rating": rating, "rank": rank}
     else:
-        f = open('fivethirtyeight_ncaa_forecasts_2023_women.csv')
-    teams = {}
-    for line in f:
-        line = line.strip()
-        items = line.split(',')
-        if items[0] == 'gender':
-            continue
-        teams[str(items[13])] = float(items[14])
-    return teams
+        os.system('wget -O sonnys.html https://sonnymoorepowerratings.com/w-basket.htm')
+        with open("sonnys.html", "r") as f:
+            table_start = False
+            for line in f.read().split("\n"):
+                if line.strip() == "<B>":
+                    table_start = True
+                    continue
+                if table_start:
+                    team = line[4:32].strip().title()
+                    team = translate_team_sonny(team)
+                    rank = int(line[:3].strip())
+                    rating = float(line[54:].strip())
+                    team_kenpoms[team] = {"rating": rating, "rank": rank}
+                    if rank == 362:     #TODO ? How many teams are there?
+                        break
+    return team_kenpoms
 
 def printbracket(winners, regions):
     space = max([max([len(x[y]) for y in x]) for x in regions])
@@ -468,6 +541,8 @@ def create_parser():
     parser.add_argument("-n", dest="num_sims", type=int, default=1, help="run n simulations and print the results (default=1)")
     parser.add_argument("-s", dest="print_bracket", action='store_false', help="Suppress printing the bracket")
     parser.add_argument("-w", dest="womens", action='store_true', help="Simulate the women's tournament")
+    parser.add_argument("-o", dest="outputfile", type=str, default="", help="Store output in this csv file")
+    parser.add_argument("-b", dest="htmloutputfile", type=str, default="", help="Build html file with results")
     parser.set_defaults(print_bracket=True, womens=False)
     return parser 
 
@@ -479,21 +554,44 @@ if __name__ == '__main__':
     num_sims = args.num_sims
     print_bracket = args.print_bracket
     mens = not args.womens
+    outputfile = args.outputfile
+    htmloutputfile = args.htmloutputfile
     
     trialnum = 0
     finalfours = {}
     champs = {}
+    init_teams = scrape_initial_kenpom(mens)
+    results = dict()
+    for team in init_teams:
+        results[team] = [0, 0, 0, 0, 0, 0]
 
     while trialnum < num_sims:
         regions = create_regions(mens)
         winners = []
 
-        teams = create_teams(mens)
-        simbracket(winners, teams, regions)
+        teams = create_teams(init_teams)
+        simbracket(mens, winners, teams, regions)
 
         if print_bracket:
             printbracket(winners, regions)
         
+        for winner in winners[:32]:
+            results[winner][0] += 1
+
+        for winner in winners[32:48]:
+            results[winner][1] += 1
+
+        for winner in winners[48:56]:
+            results[winner][2] += 1
+
+        for winner in winners[56:60]:
+            results[winner][3] += 1
+
+        for winner in winners[60:62]:
+            results[winner][4] += 1
+
+        results[winners[62]][5] += 1
+
         for x in range(56, 60):
             if winners[x] in finalfours:
                 finalfours[winners[x]] += 1
@@ -506,6 +604,7 @@ if __name__ == '__main__':
             champs[winners[62]] = 1
 
         trialnum += 1
+
 
     champlist = list(reversed(sorted(champs.items(), key=lambda kv: kv[1])))
     fflist = list(reversed(sorted(finalfours.items(), key=lambda kv: kv[1])))
@@ -520,4 +619,110 @@ if __name__ == '__main__':
 
     print('champs:', champpct, '\n')
     print('final fours:', ffpct)
+
+    print("TEAM                2R     S16    E8     F4     NCG    NC")
+    f = open(outputfile, "w")
+    f.write("Team,2R,S16,E8,F4,NCG,NC\n")
+
+    h = open(htmloutputfile, "w")
+    h.write('<!DOCTYPE html>\n\n')
+    h.write('<html>\n')
+    h.write('<head>\n')
+    h.write('  <link rel="icon" type="image/x-icon" href="assets/chergieball.ico">\n')
+    h.write('  <link rel="stylesheet" href="tablestyling.css">\n')
+    h.write('</head>\n\n')
+    h.write('<div class="link_row"\n')
+    h.write('  <nav>\n')
+    h.write('    <ul class="link_list">\n')
+    h.write('      <li>\n')
+    h.write('        <img src=assets/chergieball.ico height="50px" style="padding-top: 5px;"><img/>\n')
+    h.write('      </li>\n')
+    h.write('      <li class="non_image_element">\n')
+    h.write('        <a href="men.html">Men\'s Projections</a>\n')
+    h.write('      </li>\n')
+    h.write('      <li class="non_image_element">\n')
+    h.write('        <a href="women.html">Women\'s Projections</a>\n')
+    h.write('      <li>\n')
+    h.write('      </li>\n')
+    h.write('    </ul>\n')
+    h.write('  </nav>\n')
+    h.write('</div>\n')
+    h.write('<div style="float: left">\n')
+    h.write('  <table class="percent_table">\n')
+    h.write('    <thead>\n')
+    h.write('      <tr><th></th><th>Team</th><th>2R</th><th>S16</th><th>E8</th><th>F4</th><th>NCG</th><th>NC</th></tr>\n')
+    h.write('    </thead>\n')
+    h.write('    <tbody>\n')
+    
+    for team in sorted(results, key=lambda x: results[x][5], reverse=True):
+        if results[team][0] == 0:
+            continue
+        print(team.ljust(20), end='')
+        print("{:.2f}".format(results[team][0]/num_sims*100).rjust(5), end='  ')
+        print("{:.2f}".format(results[team][1]/num_sims*100).rjust(5), end='  ')
+        print("{:.2f}".format(results[team][2]/num_sims*100).rjust(5), end='  ')
+        print("{:.2f}".format(results[team][3]/num_sims*100).rjust(5), end='  ')
+        print("{:.2f}".format(results[team][4]/num_sims*100).rjust(5), end='  ')
+        print("{:.2f}".format(results[team][5]/num_sims*100).rjust(5), end='  ')
+        print()
+        
+        f.write(team + ",")
+        for i in range(0, 6):
+            f.write(str(results[team][i]/num_sims*100))
+            f.write(",")
+        f.write("\n")
+        
+        h.write('      <tr>')
+        h.write('<td><img class="row_logo" src = assets/' + team.replace(" ", "").replace(".", "").replace("'", "").replace("&", "") + '.png></img></td>')
+        h.write('<td>' + team + '</td>')
+        for i in range (0, 6):
+            color_percentage = str(round((-results[team][i]/num_sims*100)/2 + 100))
+            h.write('<td style="background-color: hsl(120, 50%, ' + color_percentage + '%)">' + "{:.2f}".format(results[team][i]/num_sims*100) + '%</td>')
+        h.write('</tr>\n')
+    h.write('    </tbody>')
+    h.write('  </table>\n')
+    h.write('</div>\n')
+
+
+    f.write("\n\n")
+    f.write("Team,2R,S16,E8,F4,NCG,NC\n")
+    
+    h.write('<div style="margin-left: 50%">\n')
+    h.write('  <table class="odds_table">\n')
+    h.write('    <thead>\n')
+    h.write('      <tr><th></th><th>Team</th><th>2R</th><th>S16</th><th>E8</th><th>F4</th><th>NCG</th><th>NC</th></tr>\n')
+    h.write('    </thead>\n')
+    h.write('    <tbody>\n')
+
+    for team in sorted(results, key=lambda x: results[x][5], reverse=True):
+        if results[team][0] == 0:
+            continue
+        f.write(team + ",")
+        h.write('      <tr>')
+        h.write('<td><img class="row_logo" src = assets/' + team.replace(" ", "").replace(".", "").replace("'", "").replace("&", "") + '.png></img></td>')
+        h.write('<td>' + team + '</td>')
+        for i in range(0, 6):
+            if results[team][i]/num_sims > 0.5:
+                odds = 100/(1 - 1/(results[team][i]/num_sims))
+            else:
+                try:
+                    odds = 100/(results[team][i]/num_sims) - 100
+                except ZeroDivisionError:
+                    odds = ""
+            f.write(str(odds))
+            f.write(",")
+            
+            try:
+                odds_out = str(round(odds))
+                if odds > 0:
+                    odds_out = "+" + odds_out
+                color_percentage = str(round((-results[team][i]/num_sims*100)/2 + 100))
+                h.write('<td style="background-color: hsl(120, 50%, ' + color_percentage + '%)">' + odds_out + '</td>')
+            except TypeError:
+                h.write('<td style="background-color: hsl(120, 50%, 100%)"></td>')
+        h.write('</tr>\n')
+        f.write("\n")
+
+
+
 

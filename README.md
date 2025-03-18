@@ -1,5 +1,5 @@
 # bracketgen
-Generate a bracket randomly using 538 projections!
+Generate a bracket randomly using KenPom projections!
 
 Use:
 python3 bracketgen.py
