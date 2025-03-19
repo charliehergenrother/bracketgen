@@ -14,8 +14,8 @@ def fill_winners(mens):
         return
     if mens:
         pass
-        #PLAY_IN_WINNERS.append("Texas A&M-CC")
-        #PLAY_IN_WINNERS.append("Pittsburgh")
+        PLAY_IN_WINNERS.append("Alabama St.")
+        PLAY_IN_WINNERS.append("North Carolina")
         #PLAY_IN_WINNERS.append("Fairleigh Dickinson")
         #PLAY_IN_WINNERS.append("Arizona State")
         #### start of first round ####
@@ -347,7 +347,6 @@ def findwinner(team1, team2, winners, teams, regions, mens):
         team2 = play_in_winner
     if len(winners) in MATCHUP_WINNERS:
         winners.append(MATCHUP_WINNERS[len(winners)])
-
     spread = (teams[team1] - teams[team2])
     if mens:
         spread *= 0.675 # kenpom ratings are over 100 possessions. The average men's bball game has 67.5 possessions
@@ -564,6 +563,8 @@ if __name__ == '__main__':
     results = dict()
     for team in init_teams:
         results[team] = [0, 0, 0, 0, 0, 0]
+
+    fill_winners(mens)
 
     while trialnum < num_sims:
         regions = create_regions(mens)
