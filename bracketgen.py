@@ -19,7 +19,7 @@ def fill_winners(mens):
         PLAY_IN_WINNERS.append("Mount St. Mary's")
         PLAY_IN_WINNERS.append("Xavier")
         #### start of first round ####
-        #MATCHUP_WINNERS[0] = "Alabama"
+        MATCHUP_WINNERS[0] = "Auburn"
         MATCHUP_WINNERS[1] = "Creighton"
         #MATCHUP_WINNERS[2] = "San Diego State"
         #MATCHUP_WINNERS[3] = "Virginia"
@@ -43,7 +43,7 @@ def fill_winners(mens):
         MATCHUP_WINNERS[21] = "Wisconsin"
         #MATCHUP_WINNERS[22] = "Texas A&M"
         #MATCHUP_WINNERS[23] = "Texas"
-        #MATCHUP_WINNERS[24] = "Kansas"
+        MATCHUP_WINNERS[24] = "Houston"
         #MATCHUP_WINNERS[25] = "Arkansas"
         #MATCHUP_WINNERS[26] = "Saint Mary's"
         MATCHUP_WINNERS[27] = "Purdue"
