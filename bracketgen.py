@@ -46,7 +46,7 @@ def fill_winners(mens):
         #MATCHUP_WINNERS[24] = "Kansas"
         #MATCHUP_WINNERS[25] = "Arkansas"
         #MATCHUP_WINNERS[26] = "Saint Mary's"
-        #MATCHUP_WINNERS[27] = "Connecticut"
+        MATCHUP_WINNERS[27] = "Purdue"
         #MATCHUP_WINNERS[28] = "TCU"
         #MATCHUP_WINNERS[29] = "Gonzaga"
         #MATCHUP_WINNERS[30] = "Northwestern"
