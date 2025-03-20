@@ -20,7 +20,7 @@ def fill_winners(mens):
         PLAY_IN_WINNERS.append("Xavier")
         #### start of first round ####
         #MATCHUP_WINNERS[0] = "Alabama"
-        #MATCHUP_WINNERS[1] = "Maryland"
+        MATCHUP_WINNERS[1] = "Creighton"
         #MATCHUP_WINNERS[2] = "San Diego State"
         #MATCHUP_WINNERS[3] = "Virginia"
         #MATCHUP_WINNERS[4] = "Creighton"
@@ -347,6 +347,7 @@ def findwinner(team1, team2, winners, teams, regions, mens):
         team2 = play_in_winner
     if len(winners) in MATCHUP_WINNERS:
         winners.append(MATCHUP_WINNERS[len(winners)])
+        return
     spread = (teams[team1] - teams[team2])
     if mens:
         spread *= 0.675 # kenpom ratings are over 100 possessions. The average men's bball game has 67.5 possessions
@@ -703,13 +704,13 @@ if __name__ == '__main__':
         h.write('<td><img class="row_logo" src = assets/' + team.replace(" ", "").replace(".", "").replace("'", "").replace("&", "") + '.png></img></td>')
         h.write('<td>' + team + '</td>')
         for i in range(0, 6):
-            if results[team][i]/num_sims > 0.5:
-                odds = 100/(1 - 1/(results[team][i]/num_sims))
-            else:
-                try:
+            try:
+                if results[team][i]/num_sims > 0.5:
+                    odds = 100/(1 - 1/(results[team][i]/num_sims))
+                else:
                     odds = 100/(results[team][i]/num_sims) - 100
-                except ZeroDivisionError:
-                    odds = ""
+            except ZeroDivisionError:
+                odds = ""
             f.write(str(odds))
             f.write(",")
             
