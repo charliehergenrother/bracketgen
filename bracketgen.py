@@ -16,8 +16,8 @@ def fill_winners(mens):
         pass
         PLAY_IN_WINNERS.append("Alabama St.")
         PLAY_IN_WINNERS.append("North Carolina")
-        #PLAY_IN_WINNERS.append("Fairleigh Dickinson")
-        #PLAY_IN_WINNERS.append("Arizona State")
+        PLAY_IN_WINNERS.append("Mount St. Mary's")
+        PLAY_IN_WINNERS.append("Xavier")
         #### start of first round ####
         #MATCHUP_WINNERS[0] = "Alabama"
         #MATCHUP_WINNERS[1] = "Maryland"
@@ -86,8 +86,8 @@ def fill_winners(mens):
         #MATCHUP_WINNERS[61] = "Houston"
         #MATCHUP_WINNERS[62] = "Alabama"
     else:
-        #PLAY_IN_WINNERS.append("Mississippi State")
-        #PLAY_IN_WINNERS.append("Southern")
+        PLAY_IN_WINNERS.append("Southern")
+        PLAY_IN_WINNERS.append("Iowa St.")
         #PLAY_IN_WINNERS.append("Purdue")
         #PLAY_IN_WINNERS.append("Monmouth")
         #### start of first round ####
