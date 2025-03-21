@@ -108,7 +108,7 @@ def fill_winners(mens):
         #MATCHUP_WINNERS[14] = "Florida State"
         #MATCHUP_WINNERS[15] = "Iowa"
         #MATCHUP_WINNERS[16] = "Indiana"
-        #MATCHUP_WINNERS[17] = "Oklahoma State"
+        MATCHUP_WINNERS[17] = "Indiana"
         #MATCHUP_WINNERS[18] = "Washington State"
         #MATCHUP_WINNERS[19] = "Villanova"
         #MATCHUP_WINNERS[20] = "Michigan"
