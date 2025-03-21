@@ -30,7 +30,7 @@ def fill_winners(mens):
         #MATCHUP_WINNERS[8] = "Purdue"
         #MATCHUP_WINNERS[9] = "Memphis"
         MATCHUP_WINNERS[10] = "Colorado St."
-        #MATCHUP_WINNERS[11] = "Tennessee"
+        MATCHUP_WINNERS[11] = "Maryland"
         MATCHUP_WINNERS[12] = "Drake"
         MATCHUP_WINNERS[13] = "Texas Tech"
         MATCHUP_WINNERS[14] = "Arkansas"
