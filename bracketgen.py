@@ -120,7 +120,7 @@ def fill_winners(mens):
         #MATCHUP_WINNERS[26] = "Iowa State"
         #MATCHUP_WINNERS[27] = "Tennessee"
         MATCHUP_WINNERS[28] = "Michigan"
-        #MATCHUP_WINNERS[29] = "Ohio State"
+        MATCHUP_WINNERS[29] = "Notre Dame"
         #MATCHUP_WINNERS[30] = "Baylor"
         #MATCHUP_WINNERS[31] = "Connecticut"
         #### start of second round ####
