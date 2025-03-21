@@ -32,7 +32,7 @@ def fill_winners(mens):
         #MATCHUP_WINNERS[10] = "Duke"
         #MATCHUP_WINNERS[11] = "Tennessee"
         MATCHUP_WINNERS[12] = "Drake"
-        #MATCHUP_WINNERS[13] = "Kansas State"
+        MATCHUP_WINNERS[13] = "Texas Tech"
         MATCHUP_WINNERS[14] = "Arkansas"
         MATCHUP_WINNERS[15] = "St. John's"
         #MATCHUP_WINNERS[16] = "Houston"
