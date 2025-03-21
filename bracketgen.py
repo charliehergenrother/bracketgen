@@ -88,8 +88,8 @@ def fill_winners(mens):
     else:
         PLAY_IN_WINNERS.append("Southern")
         PLAY_IN_WINNERS.append("Iowa St.")
-        #PLAY_IN_WINNERS.append("Purdue")
-        #PLAY_IN_WINNERS.append("Monmouth")
+        PLAY_IN_WINNERS.append("William & Mary")
+        PLAY_IN_WINNERS.append("Columbia")
         #### start of first round ####
         #MATCHUP_WINNERS[0] = "South Carolina"
         #MATCHUP_WINNERS[1] = "South Florida"
