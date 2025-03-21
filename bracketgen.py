@@ -35,7 +35,7 @@ def fill_winners(mens):
         MATCHUP_WINNERS[13] = "Texas Tech"
         MATCHUP_WINNERS[14] = "Arkansas"
         MATCHUP_WINNERS[15] = "St. John's"
-        #MATCHUP_WINNERS[16] = "Houston"
+        MATCHUP_WINNERS[16] = "Duke"
         MATCHUP_WINNERS[17] = "Baylor"
         #MATCHUP_WINNERS[18] = "Miami (FL)"
         #MATCHUP_WINNERS[19] = "Indiana"
@@ -122,7 +122,7 @@ def fill_winners(mens):
         MATCHUP_WINNERS[28] = "Michigan"
         MATCHUP_WINNERS[29] = "Notre Dame"
         #MATCHUP_WINNERS[30] = "Baylor"
-        #MATCHUP_WINNERS[31] = "Connecticut"
+        MATCHUP_WINNERS[31] = "TCU"
         #### start of second round ####
         #MATCHUP_WINNERS[32] = "South Carolina"
         #MATCHUP_WINNERS[33] = "UCLA"
