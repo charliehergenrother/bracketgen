@@ -24,7 +24,7 @@ def fill_winners(mens):
         MATCHUP_WINNERS[2] = "Michigan"
         MATCHUP_WINNERS[3] = "Texas A&M"
         #MATCHUP_WINNERS[4] = "Creighton"
-        #MATCHUP_WINNERS[5] = "Baylor"
+        MATCHUP_WINNERS[5] = "Iowa St."
         #MATCHUP_WINNERS[6] = "Missouri"
         #MATCHUP_WINNERS[7] = "Arizona"
         #MATCHUP_WINNERS[8] = "Purdue"
