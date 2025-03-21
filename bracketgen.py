@@ -42,7 +42,7 @@ def fill_winners(mens):
         MATCHUP_WINNERS[20] = "BYU"
         MATCHUP_WINNERS[21] = "Wisconsin"
         #MATCHUP_WINNERS[22] = "Texas A&M"
-        #MATCHUP_WINNERS[23] = "Texas"
+        MATCHUP_WINNERS[23] = "Alabama"
         MATCHUP_WINNERS[24] = "Houston"
         MATCHUP_WINNERS[25] = "Gonzaga"
         MATCHUP_WINNERS[26] = "McNeese"
