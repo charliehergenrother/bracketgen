@@ -71,7 +71,7 @@ def fill_winners(mens):
         #### start of Sweet 16 ####
         #MATCHUP_WINNERS[48] = "Alabama"
         #MATCHUP_WINNERS[49] = "Arizona"
-        #MATCHUP_WINNERS[50] = "Purdue"
+        MATCHUP_WINNERS[50] = "Florida"
         #MATCHUP_WINNERS[51] = "Marquette"
         #MATCHUP_WINNERS[52] = "Houston"
         MATCHUP_WINNERS[53] = "Alabama"
