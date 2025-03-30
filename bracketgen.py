@@ -79,8 +79,8 @@ def fill_winners(mens):
         MATCHUP_WINNERS[55] = "Tennessee"
         #### start of Elite 8 ####
         #MATCHUP_WINNERS[56] = "Alabama"
-        #MATCHUP_WINNERS[57] = "Purdue"
-        #MATCHUP_WINNERS[58] = "Houston"
+        MATCHUP_WINNERS[57] = "Florida"
+        MATCHUP_WINNERS[58] = "Duke"
         #MATCHUP_WINNERS[59] = "Kansas"
         #MATCHUP_WINNERS[60] = "Alabama"
         #MATCHUP_WINNERS[61] = "Houston"
@@ -143,11 +143,11 @@ def fill_winners(mens):
         #### start of Sweet 16 ####
         MATCHUP_WINNERS[48] = "UCLA"
         MATCHUP_WINNERS[49] = "LSU"
-        #MATCHUP_WINNERS[50] = "Stanford"
-        #MATCHUP_WINNERS[51] = "Iowa"
+        MATCHUP_WINNERS[50] = "USC"
+        MATCHUP_WINNERS[51] = "Connecticut"
         MATCHUP_WINNERS[52] = "South Carolina"
         MATCHUP_WINNERS[53] = "Duke"
-        #MATCHUP_WINNERS[54] = "Virginia Tech"
+        MATCHUP_WINNERS[54] = "Texas"
         MATCHUP_WINNERS[55] = "TCU"
         #### start of Elite 8 ####
         #MATCHUP_WINNERS[56] = "South Carolina"
