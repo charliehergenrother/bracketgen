@@ -151,9 +151,9 @@ def fill_winners(mens):
         MATCHUP_WINNERS[55] = "TCU"
         #### start of Elite 8 ####
         MATCHUP_WINNERS[56] = "UCLA"
-        #MATCHUP_WINNERS[57] = "Stanford"
+        MATCHUP_WINNERS[57] = "Connecticut"
         MATCHUP_WINNERS[58] = "South Carolina"
-        #MATCHUP_WINNERS[59] = "Virginia Tech"
+        MATCHUP_WINNERS[59] = "Texas"
         #MATCHUP_WINNERS[60] = "South Carolina"
         #MATCHUP_WINNERS[61] = "Indiana"
         #MATCHUP_WINNERS[62] = "South Carolina"
